@@ -1,6 +1,7 @@
 const irc = require('irc');
-const handlers = require('./handlers');
+const Handlers = require('./handlers');
 
+console.log(`Node version: ${process.version}`);
 console.log(`admin: ${process.env.ADMIN}`);
 console.log(`server: ${process.env.SERVER}`);
 console.log(`channel: ${process.env.INITIALCHANNEL}`);
@@ -10,8 +11,10 @@ const client = new irc.Client(process.env.SERVER, 'facetious', {
 });
 
 const settings = {
-    allowedUsers: [process.env.ADMIN],
-    client
+    allowedUsers: [process.env.ADMIN]
 }
 
-client.addListener(`message${process.env.INITIALCHANNEL}`, handlers.addChannelMessageHandler(settings, process.env.INITIALCHANNEL));
+const handlers = new Handlers(client, settings);
+
+client.addListener(`message${process.env.INITIALCHANNEL}`,
+    handlers.getChannelCommandHandlers(process.env.INITIALCHANNEL));

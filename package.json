@@ -23,5 +23,8 @@
   "homepage": "https://github.com/tsears/Facetious#readme",
   "dependencies": {
     "irc": "^0.5.2"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
   }
 }

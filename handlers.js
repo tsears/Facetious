@@ -1,45 +1,47 @@
-var addChannelMessageHandler = (settings, channel) => {
-    console.log(`Registering handler for ${channel}`);
-    const c = channel;
-    const client = settings.client;
-
-    const speak = (channel, word) => {
-        client.say(channel, 'Woof!');
+module.exports = class Handlers {
+    constructor(client, settings) {
+        this.client = client;
+        this.settings = settings;
     }
 
-    const commands = {
-        '!speak': speak
-    };
+    getChannelCommandHandlers(channel) {
+        console.log(`Registering handler for ${channel}`);
+        const c = channel;
 
-    return function(from, message) {
-        console.log(`${c} from ${from} => ${message}`);
+        const speak = (channel, word) => {
+            this.client.say(channel, 'Woof!');
+        }
 
-        if (settings.allowedUsers.indexOf(from) > -1) {
-            if (message.substr(0, 1) === '!') {
-                let cmd = '';
-                let args = '';
+        const commands = {
+            '!speak': speak
+        };
 
-                if (message.indexOf(' ') > -1) {
-                    cmd = message.substr(0, message.indexOf(' '));
-                    args = message.substr(message.indexOf(' ') + 1);
-                } else {
-                    cmd = message;
+        return (from, message) => {
+            console.log(`${c} from ${from} => ${message}`);
+
+            if (this.settings.allowedUsers.indexOf(from) > -1) {
+                if (message.substr(0, 1) === '!') {
+                    let cmd = '';
+                    let args = '';
+
+                    if (message.indexOf(' ') > -1) {
+                        cmd = message.substr(0, message.indexOf(' '));
+                        args = message.substr(message.indexOf(' ') + 1);
+                    } else {
+                        cmd = message;
+                    }
+
+                    console.log(`${from} asked me to ${cmd} with arg ${args}`);
+                    if (commands.hasOwnProperty(cmd)) {
+                        commands[cmd](channel, args);
+                    } else {
+                        this.client.action(c, 'looks puzzled');
+                    }
+
                 }
-
-                console.log(`${from} asked me to ${cmd} with arg ${args}`);
-                if (commands.hasOwnProperty(cmd)) {
-                    commands[cmd](channel, args);
-                } else {
-                    client.action(c, 'looks puzzled');
-                }
-
+            } else {
+                this.client.action(c, 'looks disinterested');
             }
-        } else {
-            client.action(c, 'looks disinterested');
         }
     }
-}
-
-module.exports = {
-    addChannelMessageHandler
 }
