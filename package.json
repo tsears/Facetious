@@ -1,0 +1,27 @@
+{
+  "name": "facetious",
+  "version": "1.0.0",
+  "description": "snoonet ##ils's friendly golden retreiver bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsears/Facetious.git"
+  },
+  "keywords": [
+    "irc",
+    "bot"
+  ],
+  "author": "Tom Sears",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tsears/Facetious/issues"
+  },
+  "homepage": "https://github.com/tsears/Facetious#readme",
+  "dependencies": {
+    "irc": "^0.5.2"
+  }
+}
