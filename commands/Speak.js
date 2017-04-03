@@ -10,7 +10,7 @@ module.exports = class Speak {
         const dogWords = [
             'woof!',
             'arf!',
-            'bark!'
+            'bark!',
         ];
 
         const wordIndex = Math.floor(Math.random() * dogWords.length);
