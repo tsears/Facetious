@@ -10,6 +10,10 @@ module.exports =  class {
         this._message = message;
     }
 
+    disconnect(message) {
+        this._message = message;
+    }
+
     get channel() { return this._channel; }
     get message() { return this._message; }
 }

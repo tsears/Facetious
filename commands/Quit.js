@@ -15,7 +15,7 @@ module.exports = class Quit {
 
         const messageIndex = Math.floor(Math.random() * quitMessages.length);
         this._client.disconnect(quitMessages[messageIndex]);
-        if (exit) {
+        if (this._exit) {
             process.exit(0); // eslint-disable-line no-process-exit
         }
     }

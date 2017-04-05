@@ -4,7 +4,7 @@
   "description": "snoonet ##ils's friendly golden retreiver bot",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
+    "test": "jasmine-node ./",
     "start": "node index.js"
   },
   "repository": {
