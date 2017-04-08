@@ -14,14 +14,16 @@ const client = new irc.Client(process.env.SERVER, process.env.BOTNAME, {
     channels: [process.env.INITIALCHANNEL],
 });
 
-const settings = {
+const state = {
+  global: {
     allowedUsers: [process.env.ADMIN],
+  },
 };
 
-const loader = new CommandLoader(client)
+const loader = new CommandLoader(client, state)
 const commands = loader.load();
 
-const handlers = new Handlers(client, settings);
+const handlers = new Handlers(client, state);
 
 client.addListener(`message${process.env.INITIALCHANNEL}`,
     handlers.getChannelCommandHandlers(process.env.INITIALCHANNEL, commands));

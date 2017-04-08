@@ -1,8 +1,8 @@
 
 module.exports = class Handlers {
-    constructor(client, settings) {
+    constructor(client, state) {
         this.client = client;
-        this.settings = settings;
+        this.state = state;
     }
 
     getChannelCommandHandlers(channel, commands) {
@@ -13,7 +13,7 @@ module.exports = class Handlers {
             console.log(`${c} from ${from} => ${message}`);
 
             if (message.substr(0, 1) === '!') {
-                if (this.settings.allowedUsers.indexOf(from) > -1) {
+                if (this.state.global.allowedUsers.indexOf(from) > -1) {
                     let cmd = '';
                     let args = '';
 

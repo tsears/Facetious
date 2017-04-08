@@ -2,8 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = class CommandLoader {
-    constructor(client) {
+    constructor(client, state) {
         this._client = client;
+        this._state = state;
     }
 
     // file operations done synchronously as we only do this once at load...
@@ -25,7 +26,7 @@ module.exports = class CommandLoader {
             if (!(cmdPath.indexOf('index.js') > -1)) {
                 //const p = path.parse(cmdPath);
                 const C = require(cmdPath) // eslint-disable-line global-require
-                const c = new C(this._client);
+                const c = new C(this._client, this._state);
                 console.log(`loaded ${cmdPath} with command ${c.command}`);
                 commands[c.command] = c;
             }
