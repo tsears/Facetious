@@ -3,6 +3,8 @@ const Handlers = require('./handlers');
 const CommandLoader = require('./commands');
 
 console.log(`Node version: ${process.version}`);
+console.log(`Run From: ${process.env.PWD}`);
+console.log(`Working Dir: ${process.cwd()}`);
 console.log(`admin: ${process.env.ADMIN}`);
 console.log(`server: ${process.env.SERVER}`);
 console.log(`channel: ${process.env.INITIALCHANNEL}`);
@@ -16,7 +18,7 @@ const settings = {
     allowedUsers: [process.env.ADMIN],
 };
 
-const loader = new CommandLoader('./commands', client)
+const loader = new CommandLoader(client)
 const commands = loader.load();
 
 const handlers = new Handlers(client, settings);

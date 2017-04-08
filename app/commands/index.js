@@ -2,8 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = class CommandLoader {
-    constructor(cmdPath, client) {
-        this._cmdPath = cmdPath;
+    constructor(client) {
         this._client = client;
     }
 
@@ -24,8 +23,8 @@ module.exports = class CommandLoader {
         } else {
             // we have a file: load it
             if (!(cmdPath.indexOf('index.js') > -1)) {
-                const p = path.parse(cmdPath);
-                const C = require(`./${p.name}`) // eslint-disable-line global-require
+                //const p = path.parse(cmdPath);
+                const C = require(cmdPath) // eslint-disable-line global-require
                 const c = new C(this._client);
                 console.log(`loaded ${cmdPath} with command ${c.command}`);
                 commands[c.command] = c;
@@ -36,7 +35,7 @@ module.exports = class CommandLoader {
     load() {
         const commands = {};
 
-        this._loadModules(this._cmdPath, commands);
+        this._loadModules(__dirname, commands);
 
         return commands;
     }

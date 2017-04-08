@@ -22,13 +22,16 @@ export default class ScriptTasks {
   test() {
     const self = this;
     return () => {
-      return self.gulp.src(['test/**/*.spec.js'])
+      return self.gulp.src([
+        'test/**/*.spec.js',
+      ])
       .pipe(self.plugins.jasmine({
         verbose: true,
         includeStackTrace: true,
         reporter: new self.plugins.jasmineSpecReporter.SpecReporter({
           spec: {
             displayStacktrace: true,
+            displaySuccessful: false,
           },
         }),
       }))

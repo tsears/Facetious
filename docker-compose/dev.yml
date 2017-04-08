@@ -7,8 +7,8 @@ services:
     env_file:
       - ../.env.list
     volumes:
-      - ..:/app
+      - ../:/var/app:ro
     entrypoint:
       - /bin/bash
       - -c
-      - "cd /var/app && npm start"
+      - "cd /var/app && ls && npm run dev"

@@ -7,7 +7,7 @@ export default class DevTasks {
   watch() {
     let self = this;
     return () => {
-      self.gulp.watch(['js/**/*.js', 'test/**/*.js'], ['lint', 'test']);
+      self.gulp.watch(['app/**/*.js', 'test/**/*.js'], ['lint', 'test']);
       self.gulp.watch(['*.js', 'gulp-tasks/*.js'], ['lint']);
     };
   }

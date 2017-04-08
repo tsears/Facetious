@@ -13,5 +13,4 @@ WORKDIR ${appDir}
 ADD package.json ./
 ADD ./app ${appDir}
 RUN npm i --production
-
 cmd ["npm", "start"]
