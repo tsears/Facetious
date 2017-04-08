@@ -10,7 +10,7 @@ RUN apt-get install -y nodejs
 RUN mkdir -p ${appDir}
 WORKDIR ${appDir}
 
-#ADD ./app/package.json ./
+ADD package.json ./
 ADD ./app ${appDir}
 RUN npm i --production
 

@@ -1,7 +1,7 @@
 version: '2'
 services:
   facetious:
-    image: facetious
+    image: tsears:facetious
     environment:
       MODE: 'dev'
     env_file:
