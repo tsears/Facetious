@@ -1,5 +1,5 @@
 const Client = require('../../mocks/MockClient.js');
-const Speak = require('../../../commands/Speak.js');
+const Speak = require('../../../app/commands/Speak.js');
 
 describe('The speak command ', () => {
     let client, speak;

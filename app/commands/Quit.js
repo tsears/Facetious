@@ -2,7 +2,7 @@ module.exports = class Quit {
     constructor(client, exit) {
         this._command = '!quit';
         this._client = client;
-        this._exit = exit;
+        this._exit = !!exit;
     }
 
     get command() {  return this._command; }

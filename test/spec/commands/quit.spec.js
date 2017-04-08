@@ -1,5 +1,5 @@
 const Client = require('../../mocks/MockClient.js');
-const Quit = require('../../../commands/Quit.js');
+const Quit = require('../../../app/commands/Quit.js');
 
 describe('The quit command ', () => {
     let quit, speak;

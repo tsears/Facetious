@@ -1,0 +1,14 @@
+version: '2'
+services:
+  facetious:
+    image: facetious
+    environment:
+      MODE: 'dev'
+    env_file:
+      - ../.env.list
+    volumes:
+      - ..:/app
+    entrypoint:
+      - /bin/bash
+      - -c
+      - "cd /var/app && npm start"
