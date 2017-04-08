@@ -1,8 +1,9 @@
 
-module.exports =  class {
+module.exports =  class MockClient {
   constructor() {
     this._channel = '';
     this._message = '';
+    this._actionMessage = '';
   }
 
   say(channel, message) {
@@ -10,9 +11,9 @@ module.exports =  class {
     this._message = message;
   }
 
-  action(channel, action) {
+  action(channel, actionMessage) {
     this._channel = channel;
-    this._message = action;
+    this._actionMessage = actionMessage;
   }
 
   disconnect(message) {
@@ -21,4 +22,5 @@ module.exports =  class {
 
   get channel() { return this._channel; }
   get message() { return this._message; }
+  get actionMessage() { return this._actionMessage; }
 }

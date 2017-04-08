@@ -19,7 +19,7 @@ module.exports = class Handlers {
 
                     if (message.indexOf(' ') > -1) {
                         cmd = message.substr(0, message.indexOf(' '));
-                        args = message.substr(message.indexOf(' ') + 1);
+                        args = message.substr(message.indexOf(' ') + 1).split(' ');
                     } else {
                         cmd = message;
                     }
