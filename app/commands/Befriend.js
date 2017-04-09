@@ -1,3 +1,5 @@
+const stringifiers = require('../stringifiers');
+
 module.exports = class Befriend {
   constructor(client, state) {
     this._command = '!befriend';
@@ -6,18 +8,6 @@ module.exports = class Befriend {
   }
 
   get command() {  return this._command; }
-
-  _makePrettyNameList(names) {
-    let nameList = '';
-
-    for(let i = 0; i < names.length - 1; ++i) {
-      nameList += args[i] + ', ';
-    }
-
-    nameList += 'and ' + args[names.length - 1];
-
-    return nameList;
-  }
 
   action(channel, args) {
 
@@ -30,7 +20,7 @@ module.exports = class Befriend {
       } else if (args.length === 2) {
         this._client.action(channel, `visits ${args.join(' and ')} and gives them each a lick`);
       } else if (args.length > 2) {
-        const nameList = this._makePrettyNameList(args);
+        const nameList = stringifiers.list(args);
         this._client.action(channel, `loves up on ${nameList}`);
       }
     }
