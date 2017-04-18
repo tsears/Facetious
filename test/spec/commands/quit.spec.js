@@ -6,7 +6,12 @@ describe('The quit command ', () => {
 
     beforeEach(() => {
         client = new Client();
-        quit = new Quit(client, false);
+        const state = {
+          global: {
+            admin: 'admin',
+          },
+        }
+        quit = new Quit(client, state, false);
     });
 
     it('should be invoked with !quit', () => {
@@ -14,7 +19,7 @@ describe('The quit command ', () => {
     })
 
     it('should cause the bot to speak.', () => {
-        quit.action('foo');
+        quit.action('foo', 'admin');
         expect(client.message).not.toEqual('');
     })
 })

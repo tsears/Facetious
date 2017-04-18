@@ -9,7 +9,7 @@ module.exports = class Befriend {
 
   get command() {  return this._command; }
 
-  action(channel, args) {
+  action(channel, from, message, args) {
 
     if (Array.isArray(args) && args.length > 0) {
 

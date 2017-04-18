@@ -1,5 +1,6 @@
 const irc = require('irc');
 const Handlers = require('./handlers');
+const ModuleLoader = require('./moduleLoader');
 const CommandLoader = require('./commands');
 
 console.log(`Node version: ${process.version}`);
@@ -16,11 +17,15 @@ const client = new irc.Client(process.env.SERVER, process.env.BOTNAME, {
 
 const state = {
   global: {
+    admin: process.env.ADMIN,
     allowedUsers: [process.env.ADMIN],
   },
 };
 
-const loader = new CommandLoader(client, state)
+const moduleLoader = new ModuleLoader();
+const commandModules = moduleLoader.load('commands/')
+console.log(commandModules);
+const loader = new CommandLoader(client, state, commandModules)
 const commands = loader.load();
 
 const handlers = new Handlers(client, state);

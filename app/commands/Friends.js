@@ -9,7 +9,7 @@ module.exports = class Friends {
 
   get command() { return this._command; }
 
-  action(channel, args) {
+  action(channel, from, message, args) {
 
     this._client.action(channel, `visits ${stringifiers.list(this._state.global.allowedUsers)}`);
   }

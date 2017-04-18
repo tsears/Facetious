@@ -27,7 +27,7 @@ module.exports = class Handlers {
                     console.log(`${from} asked me to ${cmd} with arg ${args}`);
 
                     if (commands.hasOwnProperty(cmd)) {
-                        commands[cmd].action(channel, args);
+                        commands[cmd].action(channel, from, message, args);
                     } else {
                         this.client.action(c, 'looks puzzled');
                     }

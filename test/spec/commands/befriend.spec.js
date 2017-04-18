@@ -21,7 +21,7 @@ describe('The befriend command', () => {
 
     describe('when called without a target', () => {
       it('should cause the bot to respond with an action.', () => {
-        befriend.action('foo', null);
+        befriend.action('foo', null, null, null);
         expect(client.actionMessage).toBeDefined();
         expect(client.actionMessage).not.toEqual('');
       });
@@ -29,7 +29,7 @@ describe('The befriend command', () => {
 
     describe('when given a target', () => {
       it('should cause the bot add the name to the allowedUsers list', () => {
-        befriend.action('foo', ['willy']);
+        befriend.action('foo', null, null, ['willy']);
         expect(state.global.allowedUsers).toEqual(['willy']);
       });
     });
