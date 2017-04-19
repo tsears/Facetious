@@ -1,7 +1,8 @@
 const irc = require('irc');
 const Handlers = require('./handlers');
-const ModuleLoader = require('./moduleLoader');
-const CommandLoader = require('./commands');
+const ModuleLoader = require('./loaders/ModuleLoader');
+const CommandLoader = require('./loaders/CommandLoader');
+const ReactorLoader = require('./loaders/ReactorLoader');
 
 console.log(`Node version: ${process.version}`);
 console.log(`Run From: ${process.env.PWD}`);
@@ -16,6 +17,7 @@ const client = new irc.Client(process.env.SERVER, process.env.BOTNAME, {
 });
 
 const state = {
+  name: process.env.BOTNAME,
   global: {
     admin: process.env.ADMIN,
     allowedUsers: [process.env.ADMIN],
@@ -24,11 +26,15 @@ const state = {
 
 const moduleLoader = new ModuleLoader();
 const commandModules = moduleLoader.load('commands/')
-console.log(commandModules);
-const loader = new CommandLoader(client, state, commandModules)
-const commands = loader.load();
+const reactorModules = moduleLoader.load('reactors/');
+
+const commandLoader = new CommandLoader(client, state, commandModules)
+const commands = commandLoader.load();
+
+const reactorLoader = new ReactorLoader(client, state, reactorModules);
+const reactors = reactorLoader.load();
 
 const handlers = new Handlers(client, state);
 
 client.addListener(`message${process.env.INITIALCHANNEL}`,
-    handlers.getChannelCommandHandlers(process.env.INITIALCHANNEL, commands));
+    handlers.getChannelCommandHandlers(process.env.INITIALCHANNEL, commands, reactors));

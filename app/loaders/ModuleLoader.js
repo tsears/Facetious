@@ -26,7 +26,9 @@ module.exports = class ModuleLoader {
 
     load(modulesPath) {
       const modules = [];
-      this._loadModules(path.resolve(__dirname, modulesPath), modules);
+      const modulePath = path.resolve(`./app/${modulesPath}`);
+      console.log(`path: ${modulePath}`);
+      this._loadModules(modulePath, modules);
       return modules;
     }
 }

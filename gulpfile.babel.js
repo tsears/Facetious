@@ -24,6 +24,6 @@ gulp.task('watch', devTasks.watch());
 gulp.task('default',
   [
     'lint',
-		'jsTest',
+		'test',
   ]
 );

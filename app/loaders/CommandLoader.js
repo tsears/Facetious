@@ -1,6 +1,3 @@
-const fs = require('fs');
-const path = require('path');
-
 module.exports = class CommandLoader {
     constructor(client, state, commandModules) {
         this._client = client;
