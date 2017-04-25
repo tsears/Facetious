@@ -31,7 +31,7 @@ export default class ScriptTasks {
         reporter: new self.plugins.jasmineSpecReporter.SpecReporter({
           spec: {
             displayStacktrace: true,
-            displaySuccessful: false,
+            displaySuccessful: true,
           },
         }),
       }))

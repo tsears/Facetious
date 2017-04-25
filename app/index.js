@@ -5,6 +5,7 @@ const CommandLoader = require('./loaders/CommandLoader');
 const ReactorLoader = require('./loaders/ReactorLoader');
 
 console.log(`Node version: ${process.version}`);
+console.log(`Mode: ${process.env.MODE}`);
 console.log(`Run From: ${process.env.PWD}`);
 console.log(`Working Dir: ${process.cwd()}`);
 console.log(`admin: ${process.env.ADMIN}`);

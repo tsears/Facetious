@@ -9,7 +9,6 @@ module.exports = class Quit {
     get command() {  return this._command; }
 
     action(channel, from) {
-      console.log(`from ${from}`);
       if (this._state.global.admin === from) {
         const quitMessages = [
             'running towards the truck',

@@ -13,7 +13,7 @@ module.exports = class Befriend {
 
     if (Array.isArray(args) && args.length > 0) {
 
-      this._state.global.allowedUsers = this._state.global.allowedUsers.concat(args);
+      this._state.global.allowedUsers = this._state.global.allowedUsers.concat(args.filter(a => a !== ''));
 
       if (args.length === 1) {
         this._client.action(channel, `rubs up against ${args[0]}`);
