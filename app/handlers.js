@@ -9,7 +9,7 @@ module.exports = class Handlers {
         console.log(`Registering handler for ${channel}`);
         const c = channel;
 
-        function handleCommand(from, message) {
+        const handleCommand = (from, message) => {
           let cmd = '';
           let args = '';
 
@@ -29,7 +29,7 @@ module.exports = class Handlers {
           }
         }
 
-        function checkForReaction(channel, from, message) {
+        const checkForReaction = (channel, from, message) => {
           for(let reactor of reactors) {
             let reacted = false;
 

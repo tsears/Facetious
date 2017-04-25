@@ -1,7 +1,7 @@
 module.exports = class DuckReactor {
   constructor(client, state) {
     this._reaction = 'duck';
-    this._triggers = ['・゜゜・。。・゜'];
+    this._triggers = ['\u200B'];
     this._state = state;
     this._client = client;
   }

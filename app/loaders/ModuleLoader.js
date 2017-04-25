@@ -26,7 +26,9 @@ module.exports = class ModuleLoader {
 
     load(modulesPath) {
       const modules = [];
-      const modulePath = path.resolve(`./app/${modulesPath}`);
+      // hax
+      const root = process.env.MODE === 'dev' ? 'app/' : '';
+      const modulePath = path.resolve(`./${root}${modulesPath}`);
       console.log(`path: ${modulePath}`);
       this._loadModules(modulePath, modules);
       return modules;
