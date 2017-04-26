@@ -14,8 +14,10 @@ let plugins = gulpLoadPlugins({
 
 // Script Tasks
 let scriptTasks = new ScriptTasks(gulp, plugins);
+gulp.task('preTest', scriptTasks.preTest());
 gulp.task('lint', scriptTasks.lint());
-gulp.task('test', scriptTasks.test());
+gulp.task('test', ['preTest'], scriptTasks.test());
+gulp.task('coveralls', scriptTasks.coveralls());
 
 //Dev Tasks
 let devTasks = new DevTasks(gulp, plugins);

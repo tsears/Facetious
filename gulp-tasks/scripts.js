@@ -19,6 +19,27 @@ export default class ScriptTasks {
     };
   }
 
+  coveralls() {
+    const self = this;
+    return () => {
+      return self.gulp.src([
+        'coverage/**/lcov.info',
+      ])
+      .pipe(self.plugins.coveralls());
+    }
+  }
+
+  preTest() {
+    const self = this;
+    return () => {
+      return self.gulp.src([
+        'app/**/*.js',
+      ])
+      .pipe(self.plugins.istanbul())
+      .pipe(self.plugins.istanbul.hookRequire());
+    }
+  }
+
   test() {
     const self = this;
     return () => {
@@ -35,6 +56,7 @@ export default class ScriptTasks {
           },
         }),
       }))
+      .pipe(self.plugins.istanbul.writeReports())
     }
   }
 

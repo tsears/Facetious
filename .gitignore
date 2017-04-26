@@ -14,6 +14,13 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
+# Coverage artifacts for gulp-coverage
+.coverdata
+reports
+debug
+.coverrun
+.coveralls.yml
+
 # nyc test coverage
 .nyc_output
 
