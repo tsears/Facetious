@@ -22,4 +22,9 @@ describe('The quit command ', () => {
         quit.action('foo', 'admin');
         expect(client.message).not.toEqual('');
     })
+
+    it('should cause an action if invoked by a non-admin', () => {
+      quit.action('foo', 'wally');
+      expect(client.actionMssage).not.toEqual('');
+    });
 })
