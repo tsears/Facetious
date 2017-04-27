@@ -2,7 +2,9 @@ module.exports = {
   list:  function(list) {
     let readableList = '';
 
-    if (list.length === 1) {
+    if (list.length === 0) {
+      return;
+    } else if (list.length === 1) {
 
       readableList = list[0];
 
@@ -10,7 +12,7 @@ module.exports = {
 
       readableList = list.join(' and ');
 
-    } else if (list.length > 2) {
+    } else  {
 
       for(let i = 0; i < list.length - 1; ++i) {
         readableList += list[i] + ', ';

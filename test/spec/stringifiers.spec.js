@@ -1,6 +1,12 @@
 const stringifiers = require('../../app/stringifiers');
 
 describe('the name stringifier', () => {
+  it ('returns nothing if passed an empty array', () => {
+    const entries = [];
+    const friendlyString = stringifiers.list(entries);
+    expect(friendlyString).toBeUndefined();
+  });
+
   it('returns the text of a single argument for a list of length 1', () => {
     const entries = ['foo'];
     const friendlyString = stringifiers.list(entries);

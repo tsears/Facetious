@@ -11,7 +11,7 @@ describe('The quit command ', () => {
             admin: 'admin',
           },
         }
-        quit = new Quit(client, state, false);
+        quit = new Quit(client, state);
     });
 
     it('should be invoked with !quit', () => {

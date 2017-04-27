@@ -19,7 +19,7 @@ module.exports = class Befriend {
         this._client.action(channel, `rubs up against ${args[0]}`);
       } else if (args.length === 2) {
         this._client.action(channel, `visits ${args.join(' and ')} and gives them each a lick`);
-      } else if (args.length > 2) {
+      } else {
         const nameList = stringifiers.list(args);
         this._client.action(channel, `loves up on ${nameList}`);
       }

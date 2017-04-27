@@ -1,9 +1,8 @@
 module.exports = class Quit {
-    constructor(client, state, exit) {
+    constructor(client, state) {
         this._command = '!quit';
         this._client = client;
         this._state = state;
-        this._exit = !!exit;
     }
 
     get command() {  return this._command; }
@@ -17,10 +16,6 @@ module.exports = class Quit {
 
         const messageIndex = Math.floor(Math.random() * quitMessages.length);
         this._client.disconnect(quitMessages[messageIndex]);
-        /* istanbul ignore if */
-        if (this._exit) {
-            process.exit(0); // eslint-disable-line no-process-exit
-        }
       } else {
         this._client.action('looks sad');
       }
